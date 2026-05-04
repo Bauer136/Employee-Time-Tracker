@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+    Single-page UI for the time-tracker. All interactivity lives in app.js;
+    this file is just the static structure (sections = "cards") that JS populates.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Time Tracker</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+    <!-- Top bar: app title plus live wall clock (updated by app.js tickClock). -->
+    <header class="topbar">
+        <h1>Employee Time Tracker</h1>
+        <div id="clock" class="clock"></div>
+    </header>
+
+    <main class="container">
+        <!-- Card 1: form to create a new employee (POST /api/employees). -->
+        <section class="card">
+            <h2>Add Employee</h2>
+            <form id="employee-form" class="form-row">
+                <input type="text" id="emp-name" placeholder="Full name" required />
+                <input type="email" id="emp-email" placeholder="Email" required />
+                <input type="text" id="emp-role" placeholder="Role (optional)" />
+                <input type="number" id="emp-rate" placeholder="Hourly rate" min="0" step="0.01" />
+                <button type="submit">Add</button>
+            </form>
+            <p id="employee-form-msg" class="msg"></p>
+        </section>
+
+        <!-- Card 2: pick an employee from the dropdown and clock them in/out. -->
+        <section class="card">
+            <h2>Clock In / Out</h2>
+            <div class="form-row">
+                <select id="employee-select"></select>
+                <input type="text" id="clock-note" placeholder="Note (optional)" />
+                <button id="clock-in-btn" type="button">Clock In</button>
+                <button id="clock-out-btn" type="button" class="danger">Clock Out</button>
+            </div>
+            <p id="clock-status" class="msg"></p>
+        </section>
+
+        <!-- Card 3: full employee list with editable rate, status badge, and delete button. -->
+        <section class="card">
+            <h2>Employees</h2>
+            <table id="employees-table">
+                <thead>
+                    <tr>
+                        <th>Name</th><th>Email</th><th>Role</th><th>Hourly Rate</th><th>Status</th><th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <!-- Card 4: pick a 14-day pay period, preview totals, and download an .xlsx report. -->
+        <section class="card">
+            <h2>Export Pay Period (Excel)</h2>
+            <div class="form-row">
+                <label for="pay-start" style="font-size:0.9rem;color:#4b5563;">Period start</label>
+                <input type="date" id="pay-start" />
+                <span id="pay-end-label" style="font-size:0.9rem;color:#6b7280;"></span>
+                <button id="pay-preview-btn" type="button">Preview</button>
+                <button id="pay-export-btn" type="button">Download .xlsx</button>
+            </div>
+            <p id="pay-status" class="msg"></p>
+            <table id="pay-preview-table" style="display:none;">
+                <thead>
+                    <tr>
+                        <th>Employee</th><th>Hours</th><th>Hourly Rate</th><th>Gross Pay</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot></tfoot>
+            </table>
+        </section>
+
+        <!-- Card 5: read-only history of recent time entries with computed durations. -->
+        <section class="card">
+            <h2>Recent Time Entries</h2>
+            <table id="entries-table">
+                <thead>
+                    <tr>
+                        <th>Employee</th><th>Clock In</th><th>Clock Out</th><th>Duration</th><th>Note</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="/app.js"></script>
+</body>
+</html>

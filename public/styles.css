@@ -1,0 +1,120 @@
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+.topbar {
+    background: #1f2937;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topbar h1 { margin: 0; font-size: 1.4rem; }
+
+.clock {
+    font-family: "Courier New", monospace;
+    font-size: 1.1rem;
+    background: rgba(255,255,255,0.1);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #374151;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.form-row input,
+.form-row select {
+    flex: 1 1 160px;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+button {
+    padding: 0.55rem 1.1rem;
+    border: 0;
+    border-radius: 6px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+button:hover { background: #1d4ed8; }
+button.danger { background: #dc2626; }
+button.danger:hover { background: #b91c1c; }
+button.subtle { background: transparent; color: #dc2626; padding: 0.25rem 0.5rem; }
+button.subtle:hover { background: #fee2e2; }
+
+.msg {
+    margin: 0.75rem 0 0;
+    font-size: 0.9rem;
+    min-height: 1.2em;
+}
+
+.msg.error { color: #b91c1c; }
+.msg.success { color: #047857; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.92rem;
+}
+
+th {
+    background: #f9fafb;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    font-size: 0.78rem;
+    border-radius: 999px;
+    font-weight: 600;
+}
+
+.badge.in { background: #d1fae5; color: #065f46; }
+.badge.out { background: #e5e7eb; color: #4b5563; }
